@@ -29,6 +29,7 @@ updates to Home Assistant.
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+pip install -e .
 ```
 
 2. Create a `.env` file in the repository root:
@@ -42,13 +43,25 @@ HA_ENTITY_ID=light.<your_entity_id>
 ## Run
 
 ```powershell
-python -m ambilight.main
+python -m ambilight
 ```
 
 The LAN UI is available at:
 
 ```text
 http://<laptop-ip>:8080
+```
+
+### One-command run script
+
+```powershell
+.\run.ps1
+```
+
+Override ports if needed:
+
+```powershell
+.\run.ps1 -UiPort 8080 -ApiPort 8765
 ```
 
 ## Notes
