@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from ambilight.config.json_store import AppConfig
+from ambilight.config.models import AppConfig
 from ambilight.config.validators import validate_config, validate_zone
 from ambilight.state.zone_state import ZoneRect
 

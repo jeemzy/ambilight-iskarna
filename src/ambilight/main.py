@@ -9,7 +9,8 @@ from pathlib import Path
 import uvicorn
 
 from ambilight.config.env_loader import load_env_config
-from ambilight.config.json_store import AppConfig, JsonConfigStore
+from ambilight.config.json_store import JsonConfigStore
+from ambilight.config.models import AppConfig
 from ambilight.ha.client import HomeAssistantClient
 from ambilight.mjpeg.publisher import MjpegPreviewPublisher
 from ambilight.services.sync_controller import SyncController

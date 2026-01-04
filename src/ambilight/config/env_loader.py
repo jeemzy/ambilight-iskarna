@@ -28,6 +28,8 @@ def load_env_config() -> EnvConfig:
     load_dotenv()
     base_url = os.getenv("HA_BASE_URL", "").strip()
     token = os.getenv("HA_TOKEN", "").strip()
+    if not token:
+        token = os.getenv("HA_API_TOKEN", "").strip()
     entity_id = os.getenv("HA_ENTITY_ID", "").strip()
 
     if not base_url or not token or not entity_id:

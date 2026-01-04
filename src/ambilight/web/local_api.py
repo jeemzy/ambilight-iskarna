@@ -9,7 +9,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from ambilight.config.json_store import AppConfig, JsonConfigStore, Preset
+from ambilight.config.json_store import JsonConfigStore
+from ambilight.config.models import AppConfig, Preset
 from ambilight.mjpeg.publisher import MjpegPreviewPublisher
 from ambilight.services.sync_controller import SyncController
 from ambilight.state.runtime_state import RuntimeState
