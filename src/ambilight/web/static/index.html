@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambilight Controller</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 16px;
+        background: #f5f5f5;
+      }
+      .panel {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        max-width: 900px;
+        margin: 0 auto 16px;
+      }
+      label {
+        display: block;
+        margin-top: 12px;
+      }
+      button {
+        margin-right: 8px;
+      }
+      #preview {
+        width: 100%;
+        max-height: 400px;
+        border: 1px solid #ddd;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Ambilight Controller</h1>
+      <label>
+        Display:
+        <select id="displaySelect"></select>
+      </label>
+      <div>
+        <label>
+          Zone X: <input type="number" id="zoneX" min="0" step="1" />
+        </label>
+        <label>
+          Zone Y: <input type="number" id="zoneY" min="0" step="1" />
+        </label>
+        <label>
+          Zone W: <input type="number" id="zoneW" min="1" step="1" />
+        </label>
+        <label>
+          Zone H: <input type="number" id="zoneH" min="1" step="1" />
+        </label>
+      </div>
+      <label>
+        Preview Refresh (s):
+        <input type="number" id="previewInterval" min="0.5" max="2" step="0.1" />
+      </label>
+      <label>
+        Dark Threshold:
+        <input type="number" id="darkThreshold" min="0" max="1" step="0.05" />
+      </label>
+      <label>
+        Saturation Boost:
+        <input type="number" id="saturationBoost" min="0" max="1" step="0.05" />
+      </label>
+      <div style="margin-top: 12px">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="resumeBtn">Resume</button>
+        <button id="stopBtn">Stop</button>
+        <button id="saveConfigBtn">Save Config</button>
+      </div>
+      <div style="margin-top: 12px">
+        <input id="presetName" placeholder="Preset name" />
+        <button id="savePresetBtn">Save Preset</button>
+        <button id="loadPresetBtn">Load Preset</button>
+        <button id="deletePresetBtn">Delete Preset</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Preview</h2>
+      <img id="preview" alt="Preview stream" />
+    </div>
+    <div class="panel">
+      <h2>Diagnostics</h2>
+      <pre id="diagnostics"></pre>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
