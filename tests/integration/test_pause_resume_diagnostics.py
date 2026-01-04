@@ -1,0 +1,48 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+from fastapi.testclient import TestClient
+
+from ambilight.config.json_store import AppConfig, JsonConfigStore
+from ambilight.mjpeg.publisher import MjpegPreviewPublisher
+from ambilight.state.runtime_state import RuntimeState
+from ambilight.state.zone_state import ZoneRect
+from ambilight.web.local_api import LocalApiServer
+
+
+class StubSyncController:
+    def __init__(self, config: AppConfig) -> None:
+        self.config = config
+
+    async def start(self) -> None:
+        return None
+
+    async def pause(self) -> None:
+        return None
+
+    async def resume(self) -> None:
+        return None
+
+    async def stop(self) -> None:
+        return None
+
+
+def test_status_includes_diagnostics() -> None:
+    store = JsonConfigStore(Path("tests/.config_diag"))
+    config = AppConfig(
+        display_id=1,
+        zone=ZoneRect(x=0, y=0, width=10, height=10),
+        preview_interval_sec=1.0,
+        analysis_hz=25.0,
+        dark_threshold=0.1,
+        saturation_boost=0.2,
+    )
+    controller = StubSyncController(config)
+    runtime = RuntimeState()
+    publisher = MjpegPreviewPublisher()
+    server = LocalApiServer(store, controller, runtime, publisher)
+    client = TestClient(server.app)
+
+    status = client.get("/api/status").json()
+    assert "diagnostics" in status

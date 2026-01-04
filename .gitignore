@@ -5,3 +5,15 @@ AGENTS.md
 .env
 .env.local
 /specs
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+.pytest_cache/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
