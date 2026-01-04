@@ -14,7 +14,7 @@ from ambilight.analysis.dark_detector import DarkDetector
 from ambilight.analysis.dominant_color import dominant_color_rgb
 from ambilight.analysis.smoothing import SmoothingFilter150ms
 from ambilight.capture.frame_provider import FrameProvider
-from ambilight.config.json_store import AppConfig
+from ambilight.config.models import AppConfig
 from ambilight.ha.client import HomeAssistantClient
 from ambilight.mjpeg.publisher import MjpegPreviewPublisher
 from ambilight.state.runtime_state import RuntimeState, SyncStatus

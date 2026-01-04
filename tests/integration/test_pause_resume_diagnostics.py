@@ -4,7 +4,8 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from ambilight.config.json_store import AppConfig, JsonConfigStore
+from ambilight.config.json_store import JsonConfigStore
+from ambilight.config.models import AppConfig
 from ambilight.mjpeg.publisher import MjpegPreviewPublisher
 from ambilight.state.runtime_state import RuntimeState
 from ambilight.state.zone_state import ZoneRect

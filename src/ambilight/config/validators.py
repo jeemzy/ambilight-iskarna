@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ambilight.config.json_store import AppConfig
+from ambilight.config.models import AppConfig
 from ambilight.state.zone_state import ZoneRect
 
 

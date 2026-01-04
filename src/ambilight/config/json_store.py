@@ -3,34 +3,13 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import asdict
 from pathlib import Path
 from typing import Iterable, List
 
+from ambilight.config.models import AppConfig, Preset
 from ambilight.config.validators import validate_config
 from ambilight.state.zone_state import ZoneRect
-
-
-@dataclass(frozen=True)
-class AppConfig:
-    display_id: int
-    zone: ZoneRect
-    preview_interval_sec: float
-    analysis_hz: float
-    dark_threshold: float
-    saturation_boost: float
-
-
-@dataclass(frozen=True)
-class Preset:
-    name: str
-    display_id: int
-    zone: ZoneRect
-    preview_interval_sec: float
-    analysis_hz: float
-    dark_threshold: float
-    saturation_boost: float
-
 
 
 def _config_from_dict(data: dict) -> AppConfig:
@@ -73,7 +52,7 @@ class JsonConfigStore:
 
     def load_config(self, default: AppConfig) -> AppConfig:
         if not self.config_path.exists():
-        return validate_config(default)
+            return validate_config(default)
         data = json.loads(self.config_path.read_text(encoding="utf-8"))
         return _config_from_dict(data)
 
